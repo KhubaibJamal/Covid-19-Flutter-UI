@@ -14,14 +14,12 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
@@ -35,18 +33,19 @@ class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       body: SingleChildScrollView(
         controller: controller,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             MyHeader(
               image: "assets/icons/coronadr.svg",
               textTop: "Get to know",
               textBottom: "About Covid-19.",
               offset: offset,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,12 +107,11 @@ class PreventCard extends StatelessWidget {
   final String title;
   final String text;
   const PreventCard({
-    Key key,
-    this.image,
-    this.title,
-    this.text,
-  }) : super(key: key);
-
+    super.key,
+    required this.image,
+    required this.title,
+    required this.text,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -131,7 +129,7 @@ class PreventCard extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 8),
+                    offset: const Offset(0, 8),
                     blurRadius: 24,
                     color: kShadowColor,
                   ),
@@ -142,7 +140,8 @@ class PreventCard extends StatelessWidget {
             Positioned(
               left: 130,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 height: 136,
                 width: MediaQuery.of(context).size.width - 170,
                 child: Column(
@@ -160,7 +159,7 @@ class PreventCard extends StatelessWidget {
                         text,
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                         ),
                       ),
@@ -185,28 +184,27 @@ class SymptomCard extends StatelessWidget {
   final String title;
   final bool isActive;
   const SymptomCard({
-    Key key,
-    this.image,
-    this.title,
+    super.key,
+    required this.image,
+    required this.title,
     this.isActive = false,
-  }) : super(key: key);
-
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.white,
         boxShadow: [
           isActive
               ? BoxShadow(
-                  offset: Offset(0, 10),
+                  offset: const Offset(0, 10),
                   blurRadius: 20,
                   color: kActiveShadowColor,
                 )
               : BoxShadow(
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                   blurRadius: 6,
                   color: kShadowColor,
                 ),
@@ -217,7 +215,7 @@ class SymptomCard extends StatelessWidget {
           Image.asset(image, height: 90),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
       ),

@@ -6,11 +6,11 @@ class Counter extends StatelessWidget {
   final Color color;
   final String title;
   const Counter({
-    Key key,
-    this.number,
-    this.color,
-    this.title,
-  }) : super(key: key);
+    super.key,
+    required this.number,
+    required this.color,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {

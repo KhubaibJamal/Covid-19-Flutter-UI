@@ -8,10 +8,13 @@ class MyHeader extends StatefulWidget {
   final String textTop;
   final String textBottom;
   final double offset;
-  const MyHeader(
-      {Key key, this.image, this.textTop, this.textBottom, this.offset})
-      : super(key: key);
-
+  const MyHeader({
+    super.key,
+    required this.image,
+    required this.textTop,
+    required this.textBottom,
+    required this.offset,
+  });
   @override
   _MyHeaderState createState() => _MyHeaderState();
 }
@@ -22,10 +25,10 @@ class _MyHeaderState extends State<MyHeader> {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20),
+        padding: const EdgeInsets.only(left: 40, top: 50, right: 20),
         height: 350,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
@@ -40,7 +43,7 @@ class _MyHeaderState extends State<MyHeader> {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
+          children: [
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -54,10 +57,10 @@ class _MyHeaderState extends State<MyHeader> {
               },
               child: SvgPicture.asset("assets/icons/menu.svg"),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: Stack(
-                children: <Widget>[
+                children: [
                   Positioned(
                     top: (widget.offset < 0) ? 0 : widget.offset,
                     child: SvgPicture.asset(
@@ -77,7 +80,7 @@ class _MyHeaderState extends State<MyHeader> {
                       ),
                     ),
                   ),
-                  Container(), // I dont know why it can't work without container
+                  Container(),
                 ],
               ),
             ),
